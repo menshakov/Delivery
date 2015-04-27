@@ -2,17 +2,53 @@
 <model package="delivery" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" phpdoc-package="delivery"
 	   version="1.1">
 
-	<object class="DeliveryItem" table="delivery_items" extends="xPDOSimpleObject">
-		<field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+	<object class="extDeliveryPoint" table="delivery_point" extends="xPDOSimpleObject">
+		<field key="name" dbtype="varchar" precision="250" phptype="string" null="false" default=""/>
+		<field key="id_type_delivery" dbtype="int" precision="10" phptype="int" null="false" default=""/>
+		<field key="id_city" dbtype="int" precision="10" phptype="int" null="false" default=""/>
+		<field key="address" dbtype="varchar" precision="250" phptype="string" null="true" default=""/>
+		<field key="geo" dbtype="varchar" precision="100" phptype="string" null="true" default=""/>
+		<field key="price" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
 		<field key="description" dbtype="text" phptype="text" null="true" default=""/>
 		<field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
 
-		<index alias="name" name="name" primary="false" unique="false" type="BTREE">
-			<column key="name" length="" collation="A" null="false"/>
+		<index alias="id_type_delivery" name="id_type_delivery" primary="false" unique="false" type="BTREE">
+			<column key="id_type_delivery" length="" collation="A" null="false"/>
 		</index>
+        <index alias="id_city" name="id_city" primary="false" unique="false" type="BTREE">
+            <column key="id_city" length="" collation="A" null="false"/>
+        </index>
+        <index alias="id_delivery_city" name="id_delivery_city" primary="false" unique="true" type="BTREE">
+            <column key="id_type_delivery" length="" collation="A" null="false"/>
+            <column key="id_city" length="" collation="A" null="false"/>
+        </index>
 		<index alias="active" name="active" primary="false" unique="false" type="BTREE">
 			<column key="active" length="" collation="A" null="false"/>
 		</index>
+        <aggregate alias="Type" class="msDelivery" local="id_type_delivery" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="City" class="extDeliveryCity" local="id_city" foreign="id" cardinality="one" owner="foreign" />
 	</object>
+
+    <object class="extDeliveryCity" table="delivery_city" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="250" phptype="string" null="false" default=""/>
+        <field key="id_region" dbtype="int" precision="10" phptype="int" null="false" default=""/>
+
+        <index alias="id_region" name="id_region" primary="false" unique="false" type="BTREE">
+            <column key="id_region" length="" collation="A" null="false"/>
+        </index>
+
+        <composite alias="Points" class="extDeliveryPoint" local="id" foreign="id_city" cardinality="many" owner="local" />
+        <aggregate alias="Region" class="extDeliveryRegion" local="id_region" foreign="id" cardinality="one" owner="foreign" />
+    </object>
+
+    <object class="extDeliveryRegion" table="delivery_region" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="250" phptype="string" null="false" default=""/>
+
+        <index alias="id_region" name="id_region" primary="false" unique="false" type="BTREE">
+            <column key="id_region" length="" collation="A" null="false"/>
+        </index>
+
+        <composite alias="City" class="extDeliveryCity" local="id" foreign="id_region" cardinality="many" owner="local" />
+    </object>
 
 </model>

@@ -11,7 +11,9 @@ if ($object->xpdo) {
 
 			$manager = $modx->getManager();
 			$objects = array(
-				'DeliveryItem',
+                'extDeliveryPoint',
+                'extDeliveryCity',
+                'extDeliveryRegion',
 			);
 			foreach ($objects as $tmp) {
 				$manager->createObjectContainer($tmp);
