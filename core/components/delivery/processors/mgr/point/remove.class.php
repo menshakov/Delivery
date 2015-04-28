@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Disable an Item
+ * Remove an Items
  */
-class DeliveryItemDisableProcessor extends modObjectProcessor {
-	public $objectType = 'DeliveryItem';
-	public $classKey = 'DeliveryItem';
+class DeliveryPointRemoveProcessor extends modObjectProcessor {
+	public $objectType = 'extDeliveryPoint';
+	public $classKey = 'extDeliveryPoint';
 	public $languageTopics = array('delivery');
-	//public $permission = 'save';
+	//public $permission = 'remove';
 
 
 	/**
@@ -20,17 +20,16 @@ class DeliveryItemDisableProcessor extends modObjectProcessor {
 
 		$ids = $this->modx->fromJSON($this->getProperty('ids'));
 		if (empty($ids)) {
-			return $this->failure($this->modx->lexicon('delivery_item_err_ns'));
+			return $this->failure($this->modx->lexicon('delivery_point_err_ns'));
 		}
 
 		foreach ($ids as $id) {
 			/** @var DeliveryItem $object */
 			if (!$object = $this->modx->getObject($this->classKey, $id)) {
-				return $this->failure($this->modx->lexicon('delivery_item_err_nf'));
+				return $this->failure($this->modx->lexicon('delivery_point_err_nf'));
 			}
 
-			$object->set('active', false);
-			$object->save();
+			$object->remove();
 		}
 
 		return $this->success();
@@ -38,4 +37,4 @@ class DeliveryItemDisableProcessor extends modObjectProcessor {
 
 }
 
-return 'DeliveryItemDisableProcessor';
+return 'DeliveryPointRemoveProcessor';

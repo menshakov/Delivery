@@ -3,9 +3,9 @@
 /**
  * Get an Item
  */
-class DeliveryItemGetProcessor extends modObjectGetProcessor {
-	public $objectType = 'DeliveryItem';
-	public $classKey = 'DeliveryItem';
+class DeliveryPointGetProcessor extends modObjectGetProcessor {
+	public $objectType = 'extDeliveryPoint';
+	public $classKey = 'extDeliveryPoint';
 	public $languageTopics = array('delivery:default');
 	//public $permission = 'view';
 
@@ -26,4 +26,4 @@ class DeliveryItemGetProcessor extends modObjectGetProcessor {
 
 }
 
-return 'DeliveryItemGetProcessor';
+return 'DeliveryPointGetProcessor';

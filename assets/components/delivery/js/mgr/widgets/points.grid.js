@@ -1,7 +1,7 @@
-Delivery.grid.Items = function (config) {
+Delivery.grid.Points = function (config) {
 	config = config || {};
 	if (!config.id) {
-		config.id = 'delivery-grid-items';
+		config.id = 'delivery-grid-points';
 	}
 	Ext.applyIf(config, {
 		url: Delivery.config.connector_url,
@@ -10,7 +10,7 @@ Delivery.grid.Items = function (config) {
 		tbar: this.getTopBar(config),
 		sm: new Ext.grid.CheckboxSelectionModel(),
 		baseParams: {
-			action: 'mgr/item/getlist'
+			action: 'mgr/point/getlist'
 		},
 		listeners: {
 			rowDblClick: function (grid, rowIndex, e) {
@@ -34,7 +34,7 @@ Delivery.grid.Items = function (config) {
 		remoteSort: true,
 		autoHeight: true,
 	});
-	Delivery.grid.Items.superclass.constructor.call(this, config);
+	Delivery.grid.Points.superclass.constructor.call(this, config);
 
 	// Clear selection on grid refresh
 	this.store.on('load', function () {
@@ -43,7 +43,7 @@ Delivery.grid.Items = function (config) {
 		}
 	}, this);
 };
-Ext.extend(Delivery.grid.Items, MODx.grid.Grid, {
+Ext.extend(Delivery.grid.Points, MODx.grid.Grid, {
 	windows: {},
 
 	getMenu: function (grid, rowIndex) {
@@ -57,7 +57,7 @@ Ext.extend(Delivery.grid.Items, MODx.grid.Grid, {
 
 	createItem: function (btn, e) {
 		var w = MODx.load({
-			xtype: 'delivery-item-window-create',
+			xtype: 'delivery-point-window-create',
 			id: Ext.id(),
 			listeners: {
 				success: {
@@ -84,14 +84,14 @@ Ext.extend(Delivery.grid.Items, MODx.grid.Grid, {
 		MODx.Ajax.request({
 			url: this.config.url,
 			params: {
-				action: 'mgr/item/get',
+				action: 'mgr/point/get',
 				id: id
 			},
 			listeners: {
 				success: {
 					fn: function (r) {
 						var w = MODx.load({
-							xtype: 'delivery-item-window-update',
+							xtype: 'delivery-point-window-update',
 							id: Ext.id(),
 							record: r,
 							listeners: {
@@ -118,14 +118,14 @@ Ext.extend(Delivery.grid.Items, MODx.grid.Grid, {
 		}
 		MODx.msg.confirm({
 			title: ids.length > 1
-				? _('delivery_items_remove')
-				: _('delivery_item_remove'),
+				? _('delivery_points_remove')
+				: _('delivery_point_remove'),
 			text: ids.length > 1
-				? _('delivery_items_remove_confirm')
-				: _('delivery_item_remove_confirm'),
+				? _('delivery_points_remove_confirm')
+				: _('delivery_point_remove_confirm'),
 			url: this.config.url,
 			params: {
-				action: 'mgr/item/remove',
+				action: 'mgr/point/remove',
 				ids: Ext.util.JSON.encode(ids),
 			},
 			listeners: {
@@ -147,7 +147,7 @@ Ext.extend(Delivery.grid.Items, MODx.grid.Grid, {
 		MODx.Ajax.request({
 			url: this.config.url,
 			params: {
-				action: 'mgr/item/disable',
+				action: 'mgr/point/disable',
 				ids: Ext.util.JSON.encode(ids),
 			},
 			listeners: {
@@ -168,7 +168,7 @@ Ext.extend(Delivery.grid.Items, MODx.grid.Grid, {
 		MODx.Ajax.request({
 			url: this.config.url,
 			params: {
-				action: 'mgr/item/enable',
+				action: 'mgr/point/enable',
 				ids: Ext.util.JSON.encode(ids),
 			},
 			listeners: {
@@ -187,22 +187,22 @@ Ext.extend(Delivery.grid.Items, MODx.grid.Grid, {
 
 	getColumns: function (config) {
 		return [{
-			header: _('delivery_item_id'),
+			header: _('delivery_point_id'),
 			dataIndex: 'id',
 			sortable: true,
 			width: 70
 		}, {
-			header: _('delivery_item_name'),
+			header: _('delivery_point_name'),
 			dataIndex: 'name',
 			sortable: true,
 			width: 200,
 		}, {
-			header: _('delivery_item_description'),
+			header: _('delivery_point_description'),
 			dataIndex: 'description',
 			sortable: false,
 			width: 250,
 		}, {
-			header: _('delivery_item_active'),
+			header: _('delivery_point_active'),
 			dataIndex: 'active',
 			renderer: Delivery.utils.renderBoolean,
 			sortable: true,
@@ -219,7 +219,7 @@ Ext.extend(Delivery.grid.Items, MODx.grid.Grid, {
 
 	getTopBar: function (config) {
 		return [{
-			text: '<i class="icon icon-plus">&nbsp;' + _('delivery_item_create'),
+			text: '<i class="icon icon-plus">&nbsp;' + _('delivery_point_create'),
 			handler: this.createItem,
 			scope: this
 		}, '->', {
@@ -293,4 +293,4 @@ Ext.extend(Delivery.grid.Items, MODx.grid.Grid, {
 		this.refresh();
 	}
 });
-Ext.reg('delivery-grid-items', Delivery.grid.Items);
+Ext.reg('delivery-grid-points', Delivery.grid.Points);

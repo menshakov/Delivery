@@ -3,9 +3,9 @@
 /**
  * Update an Item
  */
-class DeliveryItemUpdateProcessor extends modObjectUpdateProcessor {
-	public $objectType = 'DeliveryItem';
-	public $classKey = 'DeliveryItem';
+class DeliveryPointUpdateProcessor extends modObjectUpdateProcessor {
+	public $objectType = 'extDeliveryPoint';
+	public $classKey = 'extDeliveryPoint';
 	public $languageTopics = array('delivery');
 	//public $permission = 'save';
 
@@ -32,18 +32,18 @@ class DeliveryItemUpdateProcessor extends modObjectUpdateProcessor {
 		$id = (int)$this->getProperty('id');
 		$name = trim($this->getProperty('name'));
 		if (empty($id)) {
-			return $this->modx->lexicon('delivery_item_err_ns');
+			return $this->modx->lexicon('delivery_point_err_ns');
 		}
 
 		if (empty($name)) {
-			$this->modx->error->addField('name', $this->modx->lexicon('delivery_item_err_name'));
+			$this->modx->error->addField('name', $this->modx->lexicon('delivery_point_err_name'));
 		}
 		elseif ($this->modx->getCount($this->classKey, array('name' => $name, 'id:!=' => $id))) {
-			$this->modx->error->addField('name', $this->modx->lexicon('delivery_item_err_ae'));
+			$this->modx->error->addField('name', $this->modx->lexicon('delivery_point_err_ae'));
 		}
 
 		return parent::beforeSet();
 	}
 }
 
-return 'DeliveryItemUpdateProcessor';
+return 'DeliveryPointUpdateProcessor';

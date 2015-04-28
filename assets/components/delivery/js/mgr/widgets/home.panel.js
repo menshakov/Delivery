@@ -20,13 +20,13 @@ Delivery.panel.Home = function (config) {
 			border: true,
 			hideMode: 'offsets',
 			items: [{
-				title: _('delivery_items'),
+				title: _('delivery_points'),
 				layout: 'anchor',
 				items: [{
-					html: _('delivery_intro_msg'),
+					html: _('delivery_points_msg'),
 					cls: 'panel-desc',
 				}, {
-					xtype: 'delivery-grid-items',
+					xtype: 'delivery-grid-points',
 					cls: 'main-wrapper',
 				}]
 			}]

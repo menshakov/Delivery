@@ -31,8 +31,8 @@ class DeliveryHomeManagerController extends DeliveryMainController {
 		$this->addCss($this->Delivery->config['cssUrl'] . 'mgr/main.css');
 		$this->addCss($this->Delivery->config['cssUrl'] . 'mgr/bootstrap.buttons.css');
 		$this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/misc/utils.js');
-		$this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/widgets/items.grid.js');
-		$this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/widgets/items.windows.js');
+		$this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/widgets/points.grid.js');
+		$this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/widgets/points.windows.js');
 		$this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/widgets/home.panel.js');
 		$this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/sections/home.js');
 		$this->addHtml('<script type="text/javascript">

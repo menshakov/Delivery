@@ -3,9 +3,9 @@
 /**
  * Get a list of Items
  */
-class DeliveryItemGetListProcessor extends modObjectGetListProcessor {
-	public $objectType = 'DeliveryItem';
-	public $classKey = 'DeliveryItem';
+class DeliveryPointGetListProcessor extends modObjectGetListProcessor {
+	public $objectType = 'extDeliveryPoint';
+	public $classKey = 'extDeliveryPoint';
 	public $defaultSortField = 'id';
 	public $defaultSortDirection = 'DESC';
 	//public $permission = 'list';
@@ -57,7 +57,7 @@ class DeliveryItemGetListProcessor extends modObjectGetListProcessor {
 		$array['actions'][] = array(
 			'cls' => '',
 			'icon' => 'icon icon-edit',
-			'title' => $this->modx->lexicon('delivery_item_update'),
+			'title' => $this->modx->lexicon('delivery_point_update'),
 			//'multiple' => $this->modx->lexicon('delivery_items_update'),
 			'action' => 'updateItem',
 			'button' => true,
@@ -68,8 +68,8 @@ class DeliveryItemGetListProcessor extends modObjectGetListProcessor {
 			$array['actions'][] = array(
 				'cls' => '',
 				'icon' => 'icon icon-power-off action-green',
-				'title' => $this->modx->lexicon('delivery_item_enable'),
-				'multiple' => $this->modx->lexicon('delivery_items_enable'),
+				'title' => $this->modx->lexicon('delivery_point_enable'),
+				'multiple' => $this->modx->lexicon('delivery_points_enable'),
 				'action' => 'enableItem',
 				'button' => true,
 				'menu' => true,
@@ -79,8 +79,8 @@ class DeliveryItemGetListProcessor extends modObjectGetListProcessor {
 			$array['actions'][] = array(
 				'cls' => '',
 				'icon' => 'icon icon-power-off action-gray',
-				'title' => $this->modx->lexicon('delivery_item_disable'),
-				'multiple' => $this->modx->lexicon('delivery_items_disable'),
+				'title' => $this->modx->lexicon('delivery_point_disable'),
+				'multiple' => $this->modx->lexicon('delivery_points_disable'),
 				'action' => 'disableItem',
 				'button' => true,
 				'menu' => true,
@@ -91,8 +91,8 @@ class DeliveryItemGetListProcessor extends modObjectGetListProcessor {
 		$array['actions'][] = array(
 			'cls' => '',
 			'icon' => 'icon icon-trash-o action-red',
-			'title' => $this->modx->lexicon('delivery_item_remove'),
-			'multiple' => $this->modx->lexicon('delivery_items_remove'),
+			'title' => $this->modx->lexicon('delivery_point_remove'),
+			'multiple' => $this->modx->lexicon('delivery_points_remove'),
 			'action' => 'removeItem',
 			'button' => true,
 			'menu' => true,
@@ -103,4 +103,4 @@ class DeliveryItemGetListProcessor extends modObjectGetListProcessor {
 
 }
 
-return 'DeliveryItemGetListProcessor';
+return 'DeliveryPointGetListProcessor';
