@@ -182,39 +182,44 @@ Ext.extend(Delivery.grid.Points, MODx.grid.Grid, {
 	},
 
 	getFields: function (config) {
-		return ['id', 'name', 'description', 'active', 'actions'];
+		return ['id','name','id_type_delivery','id_city','address','price','geo','description','active'];
 	},
 
 	getColumns: function (config) {
-		return [{
-			header: _('delivery_point_id'),
-			dataIndex: 'id',
-			sortable: true,
-			width: 70
-		}, {
-			header: _('delivery_point_name'),
-			dataIndex: 'name',
-			sortable: true,
-			width: 200,
-		}, {
-			header: _('delivery_point_description'),
-			dataIndex: 'description',
-			sortable: false,
-			width: 250,
-		}, {
-			header: _('delivery_point_active'),
-			dataIndex: 'active',
-			renderer: Delivery.utils.renderBoolean,
-			sortable: true,
-			width: 100,
-		}, {
-			header: _('delivery_grid_actions'),
-			dataIndex: 'actions',
-			renderer: Delivery.utils.renderActions,
-			sortable: false,
-			width: 100,
-			id: 'actions'
-		}];
+        return [
+            {
+                header: _('delivery_point_id'),
+                dataIndex: 'id',
+                width: 50
+            }, {
+                header: _('delivery_point_name'),
+                dataIndex: 'name',
+                width: 100
+            }, {
+                header: _('delivery_point_type'),
+                dataIndex: 'id_type_delivery',
+                width: 100
+            }, {
+                header: _('delivery_point_city'),
+                dataIndex: 'id_city',
+                width: 100
+            }, {
+                header: _('delivery_point_address'),
+                dataIndex: 'address',
+                width: 100
+            }, {
+                header: _('delivery_point_price'),
+                dataIndex: 'price',
+                width: 100
+            }
+            //,{header: _('delivery_point_geo'),dataIndex: 'geo',width: 100}
+            //,{header: _('delivery_point_description'),dataIndex: 'description',width: 100}
+            ,{
+                header: _('delivery_point_active'),
+                dataIndex: 'active',
+                width: 75,
+                renderer: Delivery.utils.renderBoolean}
+        ];
 	},
 
 	getTopBar: function (config) {

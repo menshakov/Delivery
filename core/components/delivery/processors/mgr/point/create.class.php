@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Create an Item
+ * Create an Point
  */
 class DeliveryPointCreateProcessor extends modObjectCreateProcessor {
 	public $objectType = 'extDeliveryPoint';

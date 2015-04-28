@@ -12,6 +12,12 @@ $_lang['delivery_points_msg'] = 'Точки самовывоза, курьеры
 $_lang['delivery_point_id'] = 'Id';
 $_lang['delivery_point_name'] = 'Название';
 $_lang['delivery_point_active'] = 'Активно';
+$_lang['delivery_point_type'] = 'Тип доставки';
+$_lang['delivery_point_city'] = 'Населенный пункт';
+$_lang['delivery_point_address'] = 'Адрес';
+$_lang['delivery_point_price'] = 'Стоимость';
+$_lang['delivery_point_geo'] = 'Координаты';
+$_lang['delivery_point_description'] = 'Описание';
 
 $_lang['delivery_point_create'] = 'Создать точку';
 $_lang['delivery_point_update'] = 'Изменить точку';
@@ -23,7 +29,6 @@ $_lang['delivery_point_remove'] = 'Удалить точку';
 $_lang['delivery_points_remove'] = 'Удалить точки';
 $_lang['delivery_point_remove_confirm'] = 'Вы уверены, что хотите удалить эту точку?';
 $_lang['delivery_points_remove_confirm'] = 'Вы уверены, что хотите удалить эти точки?';
-$_lang['delivery_point_active'] = 'Включено';
 
 $_lang['delivery_point_err_name'] = 'Вы должны указать имя точки.';
 $_lang['delivery_point_err_ae'] = 'Точка с таким именем уже существует.';
