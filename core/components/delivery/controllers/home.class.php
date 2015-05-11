@@ -33,6 +33,10 @@ class DeliveryHomeManagerController extends DeliveryMainController {
 		$this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/misc/utils.js');
 		$this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/widgets/points.grid.js');
 		$this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/widgets/points.windows.js');
+        $this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/widgets/city.grid.js');
+        $this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/widgets/city.windows.js');
+        $this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/widgets/region.grid.js');
+        $this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/widgets/region.windows.js');
 		$this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/widgets/home.panel.js');
 		$this->addJavascript($this->Delivery->config['jsUrl'] . 'mgr/sections/home.js');
 		$this->addHtml('<script type="text/javascript">

@@ -28,8 +28,31 @@ Delivery.panel.Home = function (config) {
 				}, {
 					xtype: 'delivery-grid-points',
 					cls: 'main-wrapper',
+                    preventRender: true
 				}]
-			}]
+			},{
+                title: _('delivery_city'),
+                layout: 'anchor',
+                items: [{
+                    html: _('delivery_city_msg'),
+                    cls: 'panel-desc',
+                }, {
+                    xtype: 'delivery-grid-city',
+                    cls: 'main-wrapper',
+                    preventRender: true
+                }]
+            },{
+                title: _('delivery_region'),
+                layout: 'anchor',
+                items: [{
+                    html: _('delivery_region_msg'),
+                    cls: 'panel-desc',
+                }, {
+                    xtype: 'delivery-grid-region',
+                    cls: 'main-wrapper',
+                    preventRender: true
+                }]
+            }]
 		}]
 	});
 	Delivery.panel.Home.superclass.constructor.call(this, config);

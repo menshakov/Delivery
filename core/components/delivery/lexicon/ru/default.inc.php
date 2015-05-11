@@ -37,5 +37,13 @@ $_lang['delivery_point_err_ns'] = 'Точка не указана.';
 $_lang['delivery_point_err_remove'] = 'Ошибка при удалении точки.';
 $_lang['delivery_point_err_save'] = 'Ошибка при сохранении точки.';
 
+
+$_lang['delivery_city'] = 'Населенные пункты';
+$_lang['delivery_city_msg'] = 'Населенные пункты, где есть доставка';
+
+$_lang['delivery_region'] = 'Регионы';
+$_lang['delivery_region_msg'] = 'Условное разделение на регионы';
+
+
 $_lang['delivery_grid_search'] = 'Поиск';
 $_lang['delivery_grid_actions'] = 'Действия';
