@@ -23,6 +23,7 @@ Ext.extend(Delivery.window.CreateCity, MODx.Window, {
 	getFields: function (config) {
 		return [
             {xtype: 'textfield',fieldLabel: _('delivery_city_name'),name: 'name',id: config.id+'-name',anchor: '99%'}
+            ,{xtype: 'delivery-combo-region',fieldLabel: _('delivery_region_name'),name: 'id_region',id: config.id+'-id_region',anchor: '99%'}
         ]
 	}
 
@@ -56,6 +57,7 @@ Ext.extend(Delivery.window.UpdateCity, MODx.Window, {
         return [
             {xtype: 'hidden', name: 'id', id: config.id + '-id'}
             ,{xtype: 'textfield',fieldLabel: _('delivery_city_name'),name: 'name',id: config.id+'-name',anchor: '99%'}
+            ,{xtype: 'delivery-combo-region',fieldLabel: _('delivery_region_name'),name: 'id_region',id: config.id+'-id_region',anchor: '99%'}
         ]
 	}
 

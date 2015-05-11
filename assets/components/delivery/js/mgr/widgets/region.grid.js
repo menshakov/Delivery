@@ -190,7 +190,7 @@ Ext.extend(Delivery.grid.Region, MODx.grid.Grid, {
             {
                 header: _('delivery_region_id'),
                 dataIndex: 'id',
-                width: 50
+                width: 10
             }, {
                 header: _('delivery_region_name'),
                 dataIndex: 'name',

@@ -1,7 +1,7 @@
 <?php
 include_once 'setting.inc.php';
 
-$_lang['delivery'] = 'Delivery::управление доставкой';
+$_lang['delivery'] = 'Delivery :: управление доставкой';
 $_lang['delivery_menu_desc'] = 'Управление способами доставки.';
 $_lang['delivery_intro_msg'] = 'Вы можете выделять сразу несколько предметов при помощи Shift или Ctrl.';
 
@@ -37,12 +37,35 @@ $_lang['delivery_point_err_ns'] = 'Точка не указана.';
 $_lang['delivery_point_err_remove'] = 'Ошибка при удалении точки.';
 $_lang['delivery_point_err_save'] = 'Ошибка при сохранении точки.';
 
-
+/** City **/
 $_lang['delivery_city'] = 'Населенные пункты';
 $_lang['delivery_city_msg'] = 'Населенные пункты, где есть доставка';
 
+$_lang['delivery_city_id'] = 'Id';
+$_lang['delivery_city_name'] = 'Название';
+$_lang['delivery_region_name'] = 'Выберите регион';
+
+$_lang['delivery_city_create'] = 'Добавить населенный пункт';
+$_lang['delivery_city_update'] = 'Изменить';
+$_lang['delivery_city_remove'] = 'Удалить';
+$_lang['delivery_cities_remove'] = 'Удалить отмеченные';
+$_lang['delivery_city_remove_confirm'] = 'Вы уверены, что хотите удалить этот населенный пункт?';
+$_lang['delivery_cities_remove_confirm'] = 'Вы уверены, что хотите удалить эти населенные пункты?';
+
+
+/** Region **/
 $_lang['delivery_region'] = 'Регионы';
 $_lang['delivery_region_msg'] = 'Условное разделение на регионы';
+
+$_lang['delivery_region_id'] = 'Id';
+$_lang['delivery_region_name'] = 'Название';
+
+$_lang['delivery_region_create'] = 'Добавить регион';
+$_lang['delivery_region_update'] = 'Изменить';
+$_lang['delivery_region_remove'] = 'Удалить';
+$_lang['delivery_regions_remove'] = 'Удалить отмеченные';
+$_lang['delivery_region_remove_confirm'] = 'Вы уверены, что хотите удалить этот регион?';
+$_lang['delivery_regions_remove_confirm'] = 'Вы уверены, что хотите удалить эти регионы?';
 
 
 $_lang['delivery_grid_search'] = 'Поиск';

@@ -32,6 +32,7 @@
     <object class="extDeliveryCity" table="delivery_city" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="250" phptype="string" null="false" default=""/>
         <field key="id_region" dbtype="int" precision="10" phptype="int" null="false" default=""/>
+        <field key="rank" dbtype="int" precision="10" phptype="int" null="false" default=""/>
 
         <index alias="id_region" name="id_region" primary="false" unique="false" type="BTREE">
             <column key="id_region" length="" collation="A" null="false"/>

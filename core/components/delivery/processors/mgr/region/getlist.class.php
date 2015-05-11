@@ -3,11 +3,11 @@
 /**
  * Get a list of Items
  */
-class DeliveryCityGetListProcessor extends modObjectGetListProcessor {
-	public $objectType = 'extDeliveryCity';
-	public $classKey = 'extDeliveryCity';
-	public $defaultSortField = 'rank';
-	public $defaultSortDirection = 'asc';
+class DeliveryRegionGetListProcessor extends modObjectGetListProcessor {
+	public $objectType = 'extDeliveryRegion';
+	public $classKey = 'extDeliveryRegion';
+	public $defaultSortField = 'id';
+	public $defaultSortDirection = 'DESC';
 	//public $permission = 'list';
 
 
@@ -57,7 +57,7 @@ class DeliveryCityGetListProcessor extends modObjectGetListProcessor {
 		$array['actions'][] = array(
 			'cls' => '',
 			'icon' => 'icon icon-edit',
-			'title' => $this->modx->lexicon('delivery_city_update'),
+			'title' => $this->modx->lexicon('delivery_region_update'),
 			//'multiple' => $this->modx->lexicon('delivery_items_update'),
 			'action' => 'updateItem',
 			'button' => true,
@@ -68,8 +68,8 @@ class DeliveryCityGetListProcessor extends modObjectGetListProcessor {
 			$array['actions'][] = array(
 				'cls' => '',
 				'icon' => 'icon icon-power-off action-green',
-				'title' => $this->modx->lexicon('delivery_city_enable'),
-				'multiple' => $this->modx->lexicon('delivery_cities_enable'),
+				'title' => $this->modx->lexicon('delivery_region_enable'),
+				'multiple' => $this->modx->lexicon('delivery_regions_enable'),
 				'action' => 'enableItem',
 				'button' => true,
 				'menu' => true,
@@ -79,8 +79,8 @@ class DeliveryCityGetListProcessor extends modObjectGetListProcessor {
 			$array['actions'][] = array(
 				'cls' => '',
 				'icon' => 'icon icon-power-off action-gray',
-				'title' => $this->modx->lexicon('delivery_city_disable'),
-				'multiple' => $this->modx->lexicon('delivery_cities_disable'),
+				'title' => $this->modx->lexicon('delivery_region_disable'),
+				'multiple' => $this->modx->lexicon('delivery_regions_disable'),
 				'action' => 'disableItem',
 				'button' => true,
 				'menu' => true,
@@ -91,8 +91,8 @@ class DeliveryCityGetListProcessor extends modObjectGetListProcessor {
 		$array['actions'][] = array(
 			'cls' => '',
 			'icon' => 'icon icon-trash-o action-red',
-			'title' => $this->modx->lexicon('delivery_city_remove'),
-			'multiple' => $this->modx->lexicon('delivery_cities_remove'),
+			'title' => $this->modx->lexicon('delivery_region_remove'),
+			'multiple' => $this->modx->lexicon('delivery_regions_remove'),
 			'action' => 'removeItem',
 			'button' => true,
 			'menu' => true,
@@ -103,4 +103,4 @@ class DeliveryCityGetListProcessor extends modObjectGetListProcessor {
 
 }
 
-return 'DeliveryCityGetListProcessor';
+return 'DeliveryRegionGetListProcessor';

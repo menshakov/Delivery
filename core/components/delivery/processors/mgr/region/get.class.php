@@ -3,9 +3,9 @@
 /**
  * Get an Item
  */
-class DeliveryCityGetProcessor extends modObjectGetProcessor {
-	public $objectType = 'extDeliveryCity';
-	public $classKey = 'extDeliveryCity';
+class DeliveryRegionGetProcessor extends modObjectGetProcessor {
+	public $objectType = 'extDeliveryRegion';
+	public $classKey = 'extDeliveryRegion';
 	public $languageTopics = array('delivery:default');
 	//public $permission = 'view';
 
@@ -26,4 +26,4 @@ class DeliveryCityGetProcessor extends modObjectGetProcessor {
 
 }
 
-return 'DeliveryCityGetProcessor';
+return 'DeliveryRegionGetProcessor';

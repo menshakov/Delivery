@@ -33,7 +33,7 @@ Ext.extend(Delivery.window.CreatePoint, MODx.Window, {
                     ,defaults: { msgTarget: 'under' }
                     ,border:false
                     ,items: [
-                        {xtype: 'textfield',fieldLabel: _('delivery_point_type'),name: 'id_type_delivery',id: config.id+'-id_type_delivery',anchor: '99%'}
+                        {xtype: 'delivery-combo-type-delivery',fieldLabel: _('delivery_point_type'),name: 'id_type_delivery',id: config.id+'-id_type_delivery',anchor: '99%'}
                         ,{xtype: 'textfield',fieldLabel: _('delivery_point_address'),name: 'address',id: config.id+'-address',anchor: '99%'}
                     ]
                 }, {
@@ -42,7 +42,7 @@ Ext.extend(Delivery.window.CreatePoint, MODx.Window, {
                     ,defaults: { msgTarget: 'under' }
                     ,border:false
                     ,items: [
-                        {xtype: 'textfield',fieldLabel: _('delivery_point_city'),name: 'id_city',id: config.id+'-id_city',anchor: '99%'}
+                        {xtype: 'delivery-combo-city',fieldLabel: _('delivery_point_city'),name: 'id_city',id: config.id+'-id_city',anchor: '99%'}
                         ,{xtype: 'textfield',fieldLabel: _('delivery_point_price'),name: 'price',id: config.id+'-price',anchor: '99%'}
                     ]
                 }]
@@ -93,7 +93,7 @@ Ext.extend(Delivery.window.UpdatePoint, MODx.Window, {
                     ,defaults: { msgTarget: 'under' }
                     ,border:false
                     ,items: [
-                        {xtype: 'textfield',fieldLabel: _('delivery_point_type'),name: 'id_type_delivery',id: config.id+'-id_type_delivery',anchor: '99%'}
+                        {xtype: 'delivery-combo-type-delivery',fieldLabel: _('delivery_point_type'),name: 'id_type_delivery',id: config.id+'-id_type_delivery',anchor: '99%'}
                         ,{xtype: 'textfield',fieldLabel: _('delivery_point_address'),name: 'address',id: config.id+'-address',anchor: '99%'}
                     ]
                 }, {
@@ -102,7 +102,7 @@ Ext.extend(Delivery.window.UpdatePoint, MODx.Window, {
                     ,defaults: { msgTarget: 'under' }
                     ,border:false
                     ,items: [
-                        {xtype: 'textfield',fieldLabel: _('delivery_point_city'),name: 'id_city',id: config.id+'-id_city',anchor: '99%'}
+                        {xtype: 'delivery-combo-city',fieldLabel: _('delivery_point_city'),name: 'id_city',id: config.id+'-id_city',anchor: '99%'}
                         ,{xtype: 'textfield',fieldLabel: _('delivery_point_price'),name: 'price',id: config.id+'-price',anchor: '99%'}
                     ]
                 }]

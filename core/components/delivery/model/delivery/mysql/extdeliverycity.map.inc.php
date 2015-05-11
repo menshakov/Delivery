@@ -8,6 +8,7 @@ $xpdo_meta_map['extDeliveryCity']= array (
   array (
     'name' => '',
     'id_region' => 0,
+    'rank' => 0,
   ),
   'fieldMeta' => 
   array (
@@ -27,6 +28,14 @@ $xpdo_meta_map['extDeliveryCity']= array (
       'null' => false,
       'default' => 0,
     ),
+    'rank' =>
+        array (
+            'dbtype' => 'int',
+            'precision' => '10',
+            'phptype' => 'int',
+            'null' => true,
+            'default' => 0,
+          ),
   ),
   'indexes' => 
   array (

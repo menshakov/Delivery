@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Disable an Item
+ * Enable an Item
  */
-class DeliveryCityDisableProcessor extends modObjectProcessor {
-	public $objectType = 'extDeliveryCity';
-	public $classKey = 'extDeliveryCity';
+class DeliveryRegionEnableProcessor extends modObjectProcessor {
+	public $objectType = 'extDeliveryRegion';
+	public $classKey = 'extDeliveryRegion';
 	public $languageTopics = array('delivery');
 	//public $permission = 'save';
 
@@ -20,16 +20,16 @@ class DeliveryCityDisableProcessor extends modObjectProcessor {
 
 		$ids = $this->modx->fromJSON($this->getProperty('ids'));
 		if (empty($ids)) {
-			return $this->failure($this->modx->lexicon('delivery_city_err_ns'));
+			return $this->failure($this->modx->lexicon('delivery_region_err_ns'));
 		}
 
 		foreach ($ids as $id) {
 			/** @var DeliveryItem $object */
 			if (!$object = $this->modx->getObject($this->classKey, $id)) {
-				return $this->failure($this->modx->lexicon('delivery_city_err_nf'));
+				return $this->failure($this->modx->lexicon('delivery_region_err_nf'));
 			}
 
-			$object->set('active', false);
+			$object->set('active', true);
 			$object->save();
 		}
 
@@ -38,4 +38,4 @@ class DeliveryCityDisableProcessor extends modObjectProcessor {
 
 }
 
-return 'DeliveryCityDisableProcessor';
+return 'DeliveryRegionEnableProcessor';

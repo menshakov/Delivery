@@ -3,11 +3,42 @@ Delivery.grid.City = function (config) {
 	if (!config.id) {
 		config.id = 'delivery-grid-city';
 	}
+
+    this.dd = function(grid) {
+        this.dropTarget = new Ext.dd.DropTarget(grid.container, {
+            ddGroup : 'dd',
+            copy:false,
+            notifyDrop : function(dd, e, data) {
+                var store = grid.store.data.items;
+                var target = store[dd.getDragData(e).rowIndex].id;
+                var source = store[data.rowIndex].id;
+                if (target != source) {
+                    dd.el.mask(_('loading'),'x-mask-loading');
+                    MODx.Ajax.request({
+                        url: Delivery.config.connector_url
+                        ,params: {
+                            action: 'mgr/city/sort'
+                            ,source: source
+                            ,target: target
+                        }
+                        ,listeners: {
+                            success: {fn:function(r) {dd.el.unmask();grid.refresh();},scope:grid}
+                            ,failure: {fn:function(r) {dd.el.unmask();},scope:grid}
+                        }
+                    });
+                    //console.log(source);
+                    //console.log(target);
+                }
+            }
+        });
+    };
+
 	Ext.applyIf(config, {
 		url: Delivery.config.connector_url,
 		fields: this.getFields(config),
 		columns: this.getColumns(config),
 		tbar: this.getTopBar(config),
+        remoteSort: true,
 		sm: new Ext.grid.CheckboxSelectionModel(),
 		baseParams: {
 			action: 'mgr/city/getlist'
@@ -33,6 +64,9 @@ Delivery.grid.City = function (config) {
 		paging: true,
 		remoteSort: true,
 		autoHeight: true,
+        ddGroup: 'dd',
+        enableDragDrop: true,
+        listeners: {render: {fn: this.dd, scope: this}}
 	});
 	Delivery.grid.City.superclass.constructor.call(this, config);
 
@@ -182,7 +216,7 @@ Ext.extend(Delivery.grid.City, MODx.grid.Grid, {
 	},
 
 	getFields: function (config) {
-		return ['id','name'];
+		return ['id','name','rank'];
 	},
 
 	getColumns: function (config) {
@@ -190,7 +224,7 @@ Ext.extend(Delivery.grid.City, MODx.grid.Grid, {
             {
                 header: _('delivery_city_id'),
                 dataIndex: 'id',
-                width: 50
+                width: 10
             }, {
                 header: _('delivery_city_name'),
                 dataIndex: 'name',

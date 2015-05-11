@@ -3,9 +3,9 @@
 /**
  * Update an Item
  */
-class DeliveryCityUpdateProcessor extends modObjectUpdateProcessor {
-	public $objectType = 'extDeliveryCity';
-	public $classKey = 'extDeliveryCity';
+class DeliveryRegionUpdateProcessor extends modObjectUpdateProcessor {
+	public $objectType = 'extDeliveryRegion';
+	public $classKey = 'extDeliveryRegion';
 	public $languageTopics = array('delivery');
 	//public $permission = 'save';
 
@@ -32,18 +32,18 @@ class DeliveryCityUpdateProcessor extends modObjectUpdateProcessor {
 		$id = (int)$this->getProperty('id');
 		$name = trim($this->getProperty('name'));
 		if (empty($id)) {
-			return $this->modx->lexicon('delivery_city_err_ns');
+			return $this->modx->lexicon('delivery_region_err_ns');
 		}
 
 		if (empty($name)) {
-			$this->modx->error->addField('name', $this->modx->lexicon('delivery_city_err_name'));
+			$this->modx->error->addField('name', $this->modx->lexicon('delivery_region_err_name'));
 		}
 		elseif ($this->modx->getCount($this->classKey, array('name' => $name, 'id:!=' => $id))) {
-			$this->modx->error->addField('name', $this->modx->lexicon('delivery_city_err_ae'));
+			$this->modx->error->addField('name', $this->modx->lexicon('delivery_region_err_ae'));
 		}
 
 		return parent::beforeSet();
 	}
 }
 
-return 'DeliveryCityUpdateProcessor';
+return 'DeliveryRegionUpdateProcessor';

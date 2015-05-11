@@ -3,9 +3,9 @@
 /**
  * Enable an Item
  */
-class DeliveryPointEnableProcessor extends modObjectProcessor {
-	public $objectType = 'extDeliveryPoint';
-	public $classKey = 'extDeliveryPoint';
+class DeliveryCityEnableProcessor extends modObjectProcessor {
+	public $objectType = 'extDeliveryCity';
+	public $classKey = 'extDeliveryCity';
 	public $languageTopics = array('delivery');
 	//public $permission = 'save';
 
@@ -20,13 +20,13 @@ class DeliveryPointEnableProcessor extends modObjectProcessor {
 
 		$ids = $this->modx->fromJSON($this->getProperty('ids'));
 		if (empty($ids)) {
-			return $this->failure($this->modx->lexicon('delivery_point_err_ns'));
+			return $this->failure($this->modx->lexicon('delivery_city_err_ns'));
 		}
 
 		foreach ($ids as $id) {
 			/** @var DeliveryItem $object */
 			if (!$object = $this->modx->getObject($this->classKey, $id)) {
-				return $this->failure($this->modx->lexicon('delivery_point_err_nf'));
+				return $this->failure($this->modx->lexicon('delivery_city_err_nf'));
 			}
 
 			$object->set('active', true);
@@ -38,4 +38,4 @@ class DeliveryPointEnableProcessor extends modObjectProcessor {
 
 }
 
-return 'DeliveryPointEnableProcessor';
+return 'DeliveryCityEnableProcessor';
