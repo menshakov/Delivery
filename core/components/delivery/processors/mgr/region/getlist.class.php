@@ -6,8 +6,8 @@
 class DeliveryRegionGetListProcessor extends modObjectGetListProcessor {
 	public $objectType = 'extDeliveryRegion';
 	public $classKey = 'extDeliveryRegion';
-	public $defaultSortField = 'id';
-	public $defaultSortDirection = 'DESC';
+	public $defaultSortField = 'rank';
+	public $defaultSortDirection = 'ASC';
 	//public $permission = 'list';
 
 

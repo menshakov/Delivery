@@ -38,7 +38,6 @@ Delivery.grid.City = function (config) {
 		fields: this.getFields(config),
 		columns: this.getColumns(config),
 		tbar: this.getTopBar(config),
-        remoteSort: true,
 		sm: new Ext.grid.CheckboxSelectionModel(),
 		baseParams: {
 			action: 'mgr/city/getlist'

@@ -7,6 +7,7 @@ $xpdo_meta_map['extDeliveryRegion']= array (
   'fields' => 
   array (
     'name' => '',
+    'rank' => 0,
   ),
   'fieldMeta' => 
   array (
@@ -18,6 +19,14 @@ $xpdo_meta_map['extDeliveryRegion']= array (
       'null' => false,
       'default' => '',
     ),
+    'rank' =>
+    array (
+      'dbtype' => 'int',
+      'precision' => '10',
+      'phptype' => 'int',
+      'null' => true,
+      'default' => 0,
+    )
   ),
   'indexes' => 
   array (

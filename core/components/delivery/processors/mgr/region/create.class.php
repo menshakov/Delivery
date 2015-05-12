@@ -25,6 +25,14 @@ class DeliveryRegionCreateProcessor extends modObjectCreateProcessor {
 		return parent::beforeSet();
 	}
 
+    /** {@inheritDoc} */
+    public function beforeSave() {
+        $this->object->fromArray(array(
+            'rank' => $this->modx->getCount('extDeliveryRegion')
+        ));
+        return parent::beforeSave();
+    }
+
 }
 
 return 'DeliveryRegionCreateProcessor';

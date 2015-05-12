@@ -6,8 +6,8 @@
 class DeliveryPointGetListProcessor extends modObjectGetListProcessor {
 	public $objectType = 'extDeliveryPoint';
 	public $classKey = 'extDeliveryPoint';
-	public $defaultSortField = 'id';
-	public $defaultSortDirection = 'DESC';
+	public $defaultSortField = 'rank';
+	public $defaultSortDirection = 'ASC';
 	//public $permission = 'list';
 
 

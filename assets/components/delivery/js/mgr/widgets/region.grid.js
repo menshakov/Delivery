@@ -3,6 +3,36 @@ Delivery.grid.Region = function (config) {
 	if (!config.id) {
 		config.id = 'delivery-grid-region';
 	}
+
+    this.dd = function(grid) {
+        this.dropTarget = new Ext.dd.DropTarget(grid.container, {
+            ddGroup : 'dd',
+            copy:false,
+            notifyDrop : function(dd, e, data) {
+                var store = grid.store.data.items;
+                var target = store[dd.getDragData(e).rowIndex].id;
+                var source = store[data.rowIndex].id;
+                if (target != source) {
+                    dd.el.mask(_('loading'),'x-mask-loading');
+                    MODx.Ajax.request({
+                        url: Delivery.config.connector_url
+                        ,params: {
+                            action: 'mgr/region/sort'
+                            ,source: source
+                            ,target: target
+                        }
+                        ,listeners: {
+                            success: {fn:function(r) {dd.el.unmask();grid.refresh();},scope:grid}
+                            ,failure: {fn:function(r) {dd.el.unmask();},scope:grid}
+                        }
+                    });
+                    //console.log(source);
+                    //console.log(target);
+                }
+            }
+        });
+    };
+
 	Ext.applyIf(config, {
 		url: Delivery.config.connector_url,
 		fields: this.getFields(config),
@@ -33,6 +63,9 @@ Delivery.grid.Region = function (config) {
 		paging: true,
 		remoteSort: true,
 		autoHeight: true,
+        ddGroup: 'dd',
+        enableDragDrop: true,
+        listeners: {render: {fn: this.dd, scope: this}}
 	});
 	Delivery.grid.Region.superclass.constructor.call(this, config);
 

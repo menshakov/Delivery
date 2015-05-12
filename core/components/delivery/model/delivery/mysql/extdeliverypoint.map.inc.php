@@ -14,6 +14,7 @@ $xpdo_meta_map['extDeliveryPoint']= array (
     'price' => '',
     'description' => '',
     'active' => 1,
+    'rank' => 0,
   ),
   'fieldMeta' => 
   array (
@@ -80,6 +81,14 @@ $xpdo_meta_map['extDeliveryPoint']= array (
       'null' => true,
       'default' => 1,
     ),
+    'rank' =>
+    array (
+      'dbtype' => 'int',
+      'precision' => '10',
+      'phptype' => 'int',
+      'null' => true,
+      'default' => 0,
+    )
   ),
   'indexes' => 
   array (

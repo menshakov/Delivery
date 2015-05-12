@@ -6,9 +6,9 @@
  * Time: 16:25
  */
 
-class DeliveryCitySortProcessor extends modObjectProcessor {
-    public $objectType = 'extDeliveryCity';
-    public $classKey = 'extDeliveryCity';
+class DeliveryRegionSortProcessor extends modObjectProcessor {
+    public $objectType = 'extDeliveryRegion';
+    public $classKey = 'extDeliveryRegion';
     public $languageTopics = array('delivery');
 
 
@@ -75,4 +75,4 @@ class DeliveryCitySortProcessor extends modObjectProcessor {
 
 }
 
-return 'DeliveryCitySortProcessor';
+return 'DeliveryRegionSortProcessor';

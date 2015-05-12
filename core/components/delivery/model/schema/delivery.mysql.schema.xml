@@ -11,6 +11,7 @@
 		<field key="price" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
 		<field key="description" dbtype="text" phptype="text" null="true" default=""/>
 		<field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+        <field key="rank" dbtype="int" precision="10" phptype="int" null="true" default=""/>
 
 		<index alias="id_type_delivery" name="id_type_delivery" primary="false" unique="false" type="BTREE">
 			<column key="id_type_delivery" length="" collation="A" null="false"/>
@@ -32,7 +33,7 @@
     <object class="extDeliveryCity" table="delivery_city" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="250" phptype="string" null="false" default=""/>
         <field key="id_region" dbtype="int" precision="10" phptype="int" null="false" default=""/>
-        <field key="rank" dbtype="int" precision="10" phptype="int" null="false" default=""/>
+        <field key="rank" dbtype="int" precision="10" phptype="int" null="true" default=""/>
 
         <index alias="id_region" name="id_region" primary="false" unique="false" type="BTREE">
             <column key="id_region" length="" collation="A" null="false"/>
@@ -44,6 +45,7 @@
 
     <object class="extDeliveryRegion" table="delivery_region" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="250" phptype="string" null="false" default=""/>
+        <field key="rank" dbtype="int" precision="10" phptype="int" null="true" default=""/>
 
         <index alias="id_region" name="id_region" primary="false" unique="false" type="BTREE">
             <column key="id_region" length="" collation="A" null="false"/>

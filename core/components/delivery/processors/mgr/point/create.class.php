@@ -25,6 +25,14 @@ class DeliveryPointCreateProcessor extends modObjectCreateProcessor {
 		return parent::beforeSet();
 	}
 
+    /** {@inheritDoc} */
+    public function beforeSave() {
+        $this->object->fromArray(array(
+            'rank' => $this->modx->getCount('extDeliveryPoint')
+        ));
+        return parent::beforeSave();
+    }
+
 }
 
 return 'DeliveryPointCreateProcessor';

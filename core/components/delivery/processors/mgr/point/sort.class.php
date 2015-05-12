@@ -6,9 +6,9 @@
  * Time: 16:25
  */
 
-class DeliveryCitySortProcessor extends modObjectProcessor {
-    public $objectType = 'extDeliveryCity';
-    public $classKey = 'extDeliveryCity';
+class DeliveryPointSortProcessor extends modObjectProcessor {
+    public $objectType = 'extDeliveryPoint';
+    public $classKey = 'extDeliveryPoint';
     public $languageTopics = array('delivery');
 
 
@@ -30,6 +30,8 @@ class DeliveryCitySortProcessor extends modObjectProcessor {
             return $this->modx->error->failure();
         }
 
+        // смещаем или поднимаем на 1 позицию все строки
+        // вплоть до перемещаемой строки
         if ($source->get('rank') < $target->get('rank')) {
             $this->modx->exec("UPDATE {$this->modx->getTableName($this->classKey)}
 				SET rank = rank - 1 WHERE
@@ -45,6 +47,8 @@ class DeliveryCitySortProcessor extends modObjectProcessor {
 					AND rank < {$source->get('rank')}
 			");
         }
+
+        // перемещаемой строке задаем позицию в которую ее переместили
         $newRank = $target->get('rank');
         $source->set('rank',$newRank);
         $source->save();
@@ -75,4 +79,4 @@ class DeliveryCitySortProcessor extends modObjectProcessor {
 
 }
 
-return 'DeliveryCitySortProcessor';
+return 'DeliveryPointSortProcessor';
