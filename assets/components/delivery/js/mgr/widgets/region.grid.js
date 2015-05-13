@@ -79,14 +79,19 @@ Delivery.grid.Region = function (config) {
 Ext.extend(Delivery.grid.Region, MODx.grid.Grid, {
 	windows: {},
 
-	getMenu: function (grid, rowIndex) {
-		var ids = this._getSelectedIds();
-
-		var row = grid.getStore().getAt(rowIndex);
-		var menu = Delivery.utils.getMenu(row.data['actions'], this, ids);
-
-		this.addContextMenuItem(menu);
-	},
+    getMenu: function() {
+        var m = [];
+        m.push({
+            text: _('delivery_point_update')
+            ,handler: this.updateItem
+        });
+        m.push('-');
+        m.push({
+            text: _('delivery_point_remove')
+            ,handler: this.removeItem
+        });
+        this.addContextMenuItem(m);
+    },
 
 	createItem: function (btn, e) {
 		var w = MODx.load({

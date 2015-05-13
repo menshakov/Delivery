@@ -51,52 +51,6 @@ class DeliveryRegionGetListProcessor extends modObjectGetListProcessor {
 	 */
 	public function prepareRow(xPDOObject $object) {
 		$array = $object->toArray();
-		$array['actions'] = array();
-
-		// Edit
-		$array['actions'][] = array(
-			'cls' => '',
-			'icon' => 'icon icon-edit',
-			'title' => $this->modx->lexicon('delivery_region_update'),
-			//'multiple' => $this->modx->lexicon('delivery_items_update'),
-			'action' => 'updateItem',
-			'button' => true,
-			'menu' => true,
-		);
-
-		if (!$array['active']) {
-			$array['actions'][] = array(
-				'cls' => '',
-				'icon' => 'icon icon-power-off action-green',
-				'title' => $this->modx->lexicon('delivery_region_enable'),
-				'multiple' => $this->modx->lexicon('delivery_regions_enable'),
-				'action' => 'enableItem',
-				'button' => true,
-				'menu' => true,
-			);
-		}
-		else {
-			$array['actions'][] = array(
-				'cls' => '',
-				'icon' => 'icon icon-power-off action-gray',
-				'title' => $this->modx->lexicon('delivery_region_disable'),
-				'multiple' => $this->modx->lexicon('delivery_regions_disable'),
-				'action' => 'disableItem',
-				'button' => true,
-				'menu' => true,
-			);
-		}
-
-		// Remove
-		$array['actions'][] = array(
-			'cls' => '',
-			'icon' => 'icon icon-trash-o action-red',
-			'title' => $this->modx->lexicon('delivery_region_remove'),
-			'multiple' => $this->modx->lexicon('delivery_regions_remove'),
-			'action' => 'removeItem',
-			'button' => true,
-			'menu' => true,
-		);
 
 		return $array;
 	}

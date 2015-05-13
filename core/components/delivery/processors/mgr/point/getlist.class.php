@@ -32,6 +32,13 @@ class DeliveryPointGetListProcessor extends modObjectGetListProcessor {
 	 * @return xPDOQuery
 	 */
 	public function prepareQueryBeforeCount(xPDOQuery $c) {
+        $c->innerJoin('extDeliveryCity', 'extDeliveryCity', 'extDeliveryCity.id = extDeliveryPoint.id_city');
+        $c->innerJoin('msDelivery', 'msDelivery', 'msDelivery.id = extDeliveryPoint.id_type_delivery');
+
+        $c->select($this->modx->getSelectColumns('extDeliveryPoint', 'extDeliveryPoint'));
+        $c->select('extDeliveryCity.name as city');
+        $c->select('msDelivery.name as delivery');
+
 		$query = trim($this->getProperty('query'));
 		if ($query) {
 			$c->where(array(
@@ -51,52 +58,6 @@ class DeliveryPointGetListProcessor extends modObjectGetListProcessor {
 	 */
 	public function prepareRow(xPDOObject $object) {
 		$array = $object->toArray();
-		$array['actions'] = array();
-
-		// Edit
-		$array['actions'][] = array(
-			'cls' => '',
-			'icon' => 'icon icon-edit',
-			'title' => $this->modx->lexicon('delivery_point_update'),
-			//'multiple' => $this->modx->lexicon('delivery_items_update'),
-			'action' => 'updateItem',
-			'button' => true,
-			'menu' => true,
-		);
-
-		if (!$array['active']) {
-			$array['actions'][] = array(
-				'cls' => '',
-				'icon' => 'icon icon-power-off action-green',
-				'title' => $this->modx->lexicon('delivery_point_enable'),
-				'multiple' => $this->modx->lexicon('delivery_points_enable'),
-				'action' => 'enableItem',
-				'button' => true,
-				'menu' => true,
-			);
-		}
-		else {
-			$array['actions'][] = array(
-				'cls' => '',
-				'icon' => 'icon icon-power-off action-gray',
-				'title' => $this->modx->lexicon('delivery_point_disable'),
-				'multiple' => $this->modx->lexicon('delivery_points_disable'),
-				'action' => 'disableItem',
-				'button' => true,
-				'menu' => true,
-			);
-		}
-
-		// Remove
-		$array['actions'][] = array(
-			'cls' => '',
-			'icon' => 'icon icon-trash-o action-red',
-			'title' => $this->modx->lexicon('delivery_point_remove'),
-			'multiple' => $this->modx->lexicon('delivery_points_remove'),
-			'action' => 'removeItem',
-			'button' => true,
-			'menu' => true,
-		);
 
 		return $array;
 	}

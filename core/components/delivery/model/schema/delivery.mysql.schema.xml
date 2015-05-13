@@ -8,6 +8,7 @@
 		<field key="id_city" dbtype="int" precision="10" phptype="int" null="false" default=""/>
 		<field key="address" dbtype="varchar" precision="250" phptype="string" null="true" default=""/>
 		<field key="geo" dbtype="varchar" precision="100" phptype="string" null="true" default=""/>
+		<field key="geo_center" dbtype="varchar" precision="100" phptype="string" null="true" default=""/>
 		<field key="price" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
 		<field key="description" dbtype="text" phptype="text" null="true" default=""/>
 		<field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>

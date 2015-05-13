@@ -5,51 +5,34 @@ Delivery.utils.renderBoolean = function (value, props, row) {
 		: String.format('<span class="red">{0}</span>', _('no'));
 }
 
-Delivery.utils.getMenu = function (actions, grid, selected) {
-	var menu = [];
-	var cls, icon, title, action = '';
+Delivery.utils.getMenu = function(actions, grid) {
+    var menu = [];
+    for (var i in actions) {
 
-	for (var i in actions) {
-		if (!actions.hasOwnProperty(i)) {
-			continue;
-		}
+        if (!actions.hasOwnProperty(i)) {continue;}
+        var a = actions[i];
+        console.log(a);
+        if (!a['menu']) {
+            if (a == '-') {menu.push('-');}
+            continue;
+        }
+        else if (menu.length > 0 && /^remove/i.test(a['type'])) {
+            menu.push('-');
+        }
 
-		var a = actions[i];
-		if (!a['menu']) {
-			if (a == '-') {
-				menu.push('-');
-			}
-			continue;
-		}
-		else if (menu.length > 0 && /^remove/i.test(a['action'])) {
-			menu.push('-');
-		}
+        var cls = typeof(a['class']) == 'object' && a['class']['menu']
+            ? a['class']['menu']
+            : '';
+        cls += ' ' + (MODx.modx23 ? 'icon icon-' : 'fa fa-') + a['icon'];
+        menu.push({
+            text: '<i class="' + cls + ' x-menu-item-icon"></i> ' + _('delivery_action_' + a['type'])
+            ,handler: grid[a['type']]
+        });
+    }
 
-		if (selected.length > 1) {
-			if (!a['multiple']) {
-				continue;
-			}
-			else if (typeof(a['multiple']) == 'string') {
-				a['title'] = a['multiple'];
-			}
-		}
-
-		cls = a['cls'] ? a['cls'] : '';
-		icon = a['icon'] ? a['icon'] : '';
-		title = a['title'] ? a['title'] : a['title'];
-		action = a['action'] ? grid[a['action']] : '';
-
-		menu.push({
-			handler: action,
-			text: String.format(
-				'<span class="{0}"><i class="x-menu-item-icon {1}"></i>{2}</span>',
-				cls, icon, title
-			),
-		});
-	}
-
-	return menu;
+    return menu;
 };
+
 
 
 Delivery.utils.renderActions = function (value, props, row) {

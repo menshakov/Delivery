@@ -42,12 +42,13 @@ Delivery.grid.Points = function (config) {
 		baseParams: {
 			action: 'mgr/point/getlist'
 		},
-		listeners: {
+	/*	listeners: {
 			rowDblClick: function (grid, rowIndex, e) {
 				var row = grid.store.getAt(rowIndex);
 				this.updateItem(grid, e, row);
 			}
 		},
+	*/
 		viewConfig: {
 			forceFit: true,
 			enableRowBody: true,
@@ -63,6 +64,8 @@ Delivery.grid.Points = function (config) {
 		paging: true,
 		remoteSort: true,
 		autoHeight: true,
+        save_action: 'mgr/point/updatefromgrid',
+        autosave: true,
         ddGroup: 'dd',
         enableDragDrop: true,
         listeners: {render: {fn: this.dd, scope: this}}
@@ -70,23 +73,32 @@ Delivery.grid.Points = function (config) {
 	Delivery.grid.Points.superclass.constructor.call(this, config);
 
 	// Clear selection on grid refresh
-	this.store.on('load', function () {
+	this.store.on('load', function (store) {
 		if (this._getSelectedIds().length) {
 			this.getSelectionModel().clearSelections();
 		}
+
+
+
+
 	}, this);
 };
 Ext.extend(Delivery.grid.Points, MODx.grid.Grid, {
 	windows: {},
 
-	getMenu: function (grid, rowIndex) {
-		var ids = this._getSelectedIds();
-
-		var row = grid.getStore().getAt(rowIndex);
-		var menu = Delivery.utils.getMenu(row.data['actions'], this, ids);
-
-		this.addContextMenuItem(menu);
-	},
+    getMenu: function() {
+        var m = [];
+        m.push({
+            text: _('delivery_point_update')
+            ,handler: this.updateItem
+        });
+        m.push('-');
+        m.push({
+            text: _('delivery_point_remove')
+            ,handler: this.removeItem
+        });
+        this.addContextMenuItem(m);
+    },
 
 	createItem: function (btn, e) {
 		var w = MODx.load({
@@ -215,7 +227,7 @@ Ext.extend(Delivery.grid.Points, MODx.grid.Grid, {
 	},
 
 	getFields: function (config) {
-		return ['id','name','id_type_delivery','id_city','address','price','geo','description','active'];
+		return ['id','name','id_type_delivery','delivery','id_city','city','address','price','geo','description','active'];
 	},
 
 	getColumns: function (config) {
@@ -230,11 +242,11 @@ Ext.extend(Delivery.grid.Points, MODx.grid.Grid, {
                 width: 100
             }, {
                 header: _('delivery_point_type'),
-                dataIndex: 'id_type_delivery',
+                dataIndex: 'delivery',
                 width: 100
             }, {
                 header: _('delivery_point_city'),
-                dataIndex: 'id_city',
+                dataIndex: 'city',
                 width: 100
             }, {
                 header: _('delivery_point_address'),
@@ -251,13 +263,16 @@ Ext.extend(Delivery.grid.Points, MODx.grid.Grid, {
                 header: _('delivery_point_active'),
                 dataIndex: 'active',
                 width: 75,
-                renderer: Delivery.utils.renderBoolean}
+                //renderer: Delivery.utils.renderBoolean,
+                editor: {xtype: 'combo-boolean', renderer: 'boolean'}
+            }
+
         ];
 	},
 
 	getTopBar: function (config) {
 		return [{
-			text: '<i class="icon icon-plus">&nbsp;' + _('delivery_point_create'),
+			text: '<i class="icon icon-plus"></i>&nbsp;' + _('delivery_point_create'),
 			handler: this.createItem,
 			scope: this
 		}, '->', {

@@ -11,6 +11,7 @@ $xpdo_meta_map['extDeliveryPoint']= array (
     'id_city' => 0,
     'address' => '',
     'geo' => '',
+    'geo_center' => '',
     'price' => '',
     'description' => '',
     'active' => 1,
@@ -51,6 +52,14 @@ $xpdo_meta_map['extDeliveryPoint']= array (
       'default' => '',
     ),
     'geo' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '100',
+      'phptype' => 'string',
+      'null' => true,
+      'default' => '',
+    ),
+    'geo_center' =>
     array (
       'dbtype' => 'varchar',
       'precision' => '100',

@@ -79,14 +79,19 @@ Delivery.grid.City = function (config) {
 Ext.extend(Delivery.grid.City, MODx.grid.Grid, {
 	windows: {},
 
-	getMenu: function (grid, rowIndex) {
-		var ids = this._getSelectedIds();
-
-		var row = grid.getStore().getAt(rowIndex);
-		var menu = Delivery.utils.getMenu(row.data['actions'], this, ids);
-
-		this.addContextMenuItem(menu);
-	},
+    getMenu: function() {
+        var m = [];
+        m.push({
+            text: _('delivery_point_update')
+            ,handler: this.updateItem
+        });
+        m.push('-');
+        m.push({
+            text: _('delivery_point_remove')
+            ,handler: this.removeItem
+        });
+        this.addContextMenuItem(m);
+    },
 
 	createItem: function (btn, e) {
 		var w = MODx.load({
@@ -215,7 +220,7 @@ Ext.extend(Delivery.grid.City, MODx.grid.Grid, {
 	},
 
 	getFields: function (config) {
-		return ['id','name','rank'];
+		return ['id','name','rank','region_name'];
 	},
 
 	getColumns: function (config) {
@@ -227,6 +232,10 @@ Ext.extend(Delivery.grid.City, MODx.grid.Grid, {
             }, {
                 header: _('delivery_city_name'),
                 dataIndex: 'name',
+                width: 100
+            }, {
+                header: _('delivery_city_region_name'),
+                dataIndex: 'region_name',
                 width: 100
             }
         ];

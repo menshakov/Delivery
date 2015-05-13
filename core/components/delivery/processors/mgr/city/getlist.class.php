@@ -32,6 +32,10 @@ class DeliveryCityGetListProcessor extends modObjectGetListProcessor {
 	 * @return xPDOQuery
 	 */
 	public function prepareQueryBeforeCount(xPDOQuery $c) {
+        $c->innerJoin('extDeliveryRegion','extDeliveryRegion','extDeliveryRegion.id = extDeliveryCity.id_region');
+        $c->select($this->modx->getSelectColumns('extDeliveryCity','extDeliveryCity'));
+        $c->select('extDeliveryRegion.name as region_name');
+
 		$query = trim($this->getProperty('query'));
 		if ($query) {
 			$c->where(array(
@@ -51,52 +55,6 @@ class DeliveryCityGetListProcessor extends modObjectGetListProcessor {
 	 */
 	public function prepareRow(xPDOObject $object) {
 		$array = $object->toArray();
-		$array['actions'] = array();
-
-		// Edit
-		$array['actions'][] = array(
-			'cls' => '',
-			'icon' => 'icon icon-edit',
-			'title' => $this->modx->lexicon('delivery_city_update'),
-			//'multiple' => $this->modx->lexicon('delivery_items_update'),
-			'action' => 'updateItem',
-			'button' => true,
-			'menu' => true,
-		);
-
-		if (!$array['active']) {
-			$array['actions'][] = array(
-				'cls' => '',
-				'icon' => 'icon icon-power-off action-green',
-				'title' => $this->modx->lexicon('delivery_city_enable'),
-				'multiple' => $this->modx->lexicon('delivery_cities_enable'),
-				'action' => 'enableItem',
-				'button' => true,
-				'menu' => true,
-			);
-		}
-		else {
-			$array['actions'][] = array(
-				'cls' => '',
-				'icon' => 'icon icon-power-off action-gray',
-				'title' => $this->modx->lexicon('delivery_city_disable'),
-				'multiple' => $this->modx->lexicon('delivery_cities_disable'),
-				'action' => 'disableItem',
-				'button' => true,
-				'menu' => true,
-			);
-		}
-
-		// Remove
-		$array['actions'][] = array(
-			'cls' => '',
-			'icon' => 'icon icon-trash-o action-red',
-			'title' => $this->modx->lexicon('delivery_city_remove'),
-			'multiple' => $this->modx->lexicon('delivery_cities_remove'),
-			'action' => 'removeItem',
-			'button' => true,
-			'menu' => true,
-		);
 
 		return $array;
 	}

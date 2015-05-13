@@ -35,6 +35,7 @@ Ext.extend(Delivery.window.CreatePoint, MODx.Window, {
                     ,items: [
                         {xtype: 'delivery-combo-type-delivery',fieldLabel: _('delivery_point_type'),name: 'id_type_delivery',id: config.id+'-id_type_delivery',anchor: '99%'}
                         ,{xtype: 'textfield',fieldLabel: _('delivery_point_address'),name: 'address',id: config.id+'-address',anchor: '99%'}
+                        ,{xtype: 'textfield',fieldLabel: _('delivery_point_geo'),name: 'geo',id: config.id+'-geo',anchor: '99%'}
                     ]
                 }, {
                     columnWidth: .5
@@ -44,11 +45,12 @@ Ext.extend(Delivery.window.CreatePoint, MODx.Window, {
                     ,items: [
                         {xtype: 'delivery-combo-city',fieldLabel: _('delivery_point_city'),name: 'id_city',id: config.id+'-id_city',anchor: '99%'}
                         ,{xtype: 'textfield',fieldLabel: _('delivery_point_price'),name: 'price',id: config.id+'-price',anchor: '99%'}
+                        ,{xtype: 'textfield',fieldLabel: _('delivery_point_geo_center'),name: 'geo_center',id: config.id+'-geo_center',anchor: '99%'}
                     ]
                 }]
             }
-            ,{xtype: 'textfield',fieldLabel: _('delivery_point_geo'),name: 'geo',id: config.id+'-geo',anchor: '99%'}
-            ,{xtype: 'textarea',fieldLabel: _('delivery_point_description'),name: 'description',id: config.id+'-description',height: 75,anchor: '99%'}
+
+            ,{xtype: 'textarea',fieldLabel: _('delivery_point_description'),name: 'description',id: config.id+'-description',grow: true, height: 75,anchor: '99%'}
             ,{xtype: 'xcheckbox',boxLabel: _('delivery_point_active'),name: 'active',id: config.id + '-active',checked: true}
         ]
 	}
@@ -95,6 +97,7 @@ Ext.extend(Delivery.window.UpdatePoint, MODx.Window, {
                     ,items: [
                         {xtype: 'delivery-combo-type-delivery',fieldLabel: _('delivery_point_type'),name: 'id_type_delivery',id: config.id+'-id_type_delivery',anchor: '99%'}
                         ,{xtype: 'textfield',fieldLabel: _('delivery_point_address'),name: 'address',id: config.id+'-address',anchor: '99%'}
+                        ,{xtype: 'textfield',fieldLabel: _('delivery_point_geo'),name: 'geo',id: config.id+'-geo',anchor: '99%'}
                     ]
                 }, {
                     columnWidth: .5
@@ -104,11 +107,12 @@ Ext.extend(Delivery.window.UpdatePoint, MODx.Window, {
                     ,items: [
                         {xtype: 'delivery-combo-city',fieldLabel: _('delivery_point_city'),name: 'id_city',id: config.id+'-id_city',anchor: '99%'}
                         ,{xtype: 'textfield',fieldLabel: _('delivery_point_price'),name: 'price',id: config.id+'-price',anchor: '99%'}
+                        ,{xtype: 'textfield',fieldLabel: _('delivery_point_geo_center'),name: 'geo_center',id: config.id+'-geo_center',anchor: '99%'}
                     ]
                 }]
             }
-            ,{xtype: 'textfield',fieldLabel: _('delivery_point_geo'),name: 'geo',id: config.id+'-geo',anchor: '99%'}
-            ,{xtype: 'textarea',fieldLabel: _('delivery_point_description'),name: 'description',id: config.id+'-description',height: 75,anchor: '99%'}
+
+            ,{xtype: 'textarea',fieldLabel: _('delivery_point_description'),name: 'description',id: config.id+'-description',grow: true, height: 75,anchor: '99%'}
             ,{xtype: 'xcheckbox',boxLabel: _('delivery_point_active'),name: 'active',id: config.id + '-active',checked: true}
         ]
 	}

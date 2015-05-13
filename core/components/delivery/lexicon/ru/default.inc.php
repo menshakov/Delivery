@@ -16,17 +16,18 @@ $_lang['delivery_point_type'] = 'Тип доставки';
 $_lang['delivery_point_city'] = 'Населенный пункт';
 $_lang['delivery_point_address'] = 'Адрес';
 $_lang['delivery_point_price'] = 'Стоимость';
-$_lang['delivery_point_geo'] = 'Координаты';
+$_lang['delivery_point_geo'] = 'Координаты метки';
+$_lang['delivery_point_geo_center'] = 'Центр карты';
 $_lang['delivery_point_description'] = 'Описание';
 
-$_lang['delivery_point_create'] = 'Создать точку';
-$_lang['delivery_point_update'] = 'Изменить точку';
-$_lang['delivery_point_enable'] = 'Включить точку';
-$_lang['delivery_points_enable'] = 'Включить точки';
-$_lang['delivery_point_disable'] = 'Отключить точку';
-$_lang['delivery_points_disable'] = 'Отключить точки';
-$_lang['delivery_point_remove'] = 'Удалить точку';
-$_lang['delivery_points_remove'] = 'Удалить точки';
+$_lang['delivery_point_create'] = 'Добавить пункт доставки';
+$_lang['delivery_point_update'] = 'Изменить';
+$_lang['delivery_point_enable'] = 'Включить';
+$_lang['delivery_points_enable'] = 'Включить';
+$_lang['delivery_point_disable'] = 'Отключить';
+$_lang['delivery_points_disable'] = 'Отключить';
+$_lang['delivery_point_remove'] = 'Удалить';
+$_lang['delivery_points_remove'] = 'Удалить';
 $_lang['delivery_point_remove_confirm'] = 'Вы уверены, что хотите удалить эту точку?';
 $_lang['delivery_points_remove_confirm'] = 'Вы уверены, что хотите удалить эти точки?';
 
@@ -43,7 +44,7 @@ $_lang['delivery_city_msg'] = 'Населенные пункты, где ест�
 
 $_lang['delivery_city_id'] = 'Id';
 $_lang['delivery_city_name'] = 'Название';
-$_lang['delivery_region_name'] = 'Выберите регион';
+$_lang['delivery_city_region_name'] = 'Выберите регион';
 
 $_lang['delivery_city_create'] = 'Добавить населенный пункт';
 $_lang['delivery_city_update'] = 'Изменить';
